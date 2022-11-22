@@ -6,6 +6,7 @@
 
         public function __construct() {
             $this->_db = DB::getinstence();
+            $this->_db->exec("set names utf8mb4"); //Чтобы не было кракозябр (знаков вопроса)
         }
 
         // Получение всех записей из таблицы products

@@ -8,8 +8,13 @@ class DB {
     public static function getinstence() {
         if(self::$_db == null) {
             // если переменная путсая - устанавливаем параметры подключение к БД
-            self::$_db = new PDO('mysql:host=localhost;port=3306;dbname=ecommerce', 'root', '');
-            // self::$_db = new PDO('mysql:host=91.219.194.11;port=3306;dbname=bhx20124_ecommerce', 'bhx20124_ecommerce', 'bhx20124_ecommerce');
+            $user = 'root';
+            $password = '';
+            $db = 'ecommerce';
+            $host = '127.0.0.1';
+            $port = 3306;
+            $dsn = 'mysql:host=' . $host . ';dbname=' . $db . ';port=' . $port;
+            self::$_db = new PDO($dsn, $user, $password);
         // возвращаем статичную переменную
         return self::$_db;
         }
