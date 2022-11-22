@@ -8,7 +8,7 @@
             // возвращаем объект модели
             return new $model();
         }
-
+        // подключение представления с передачей данных
         protected function view($view, $data = []) {
             require_once 'app/views/' . $view . '.php';
         }

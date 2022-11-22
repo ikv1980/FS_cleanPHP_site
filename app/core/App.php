@@ -4,7 +4,6 @@
         protected $controller = 'Home';
         protected $method = 'index';
         protected $params = [];
-        protected $control = null; // по умолчанию контроллер существует
 
         // тут обрабатывается непосредственно адресная строка по маске
         // HOST/$controller/$method/$params

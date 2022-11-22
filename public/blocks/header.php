@@ -23,7 +23,7 @@
             <li><a href="/categories">Все товары</a></li>
             <li><a href="/categories/shoes">Обувь</a></li>
             <li><a href="/categories/hats">Кепки</a></li>
-            <li><a href="/categories/tshirt">Футболки</a></li>
+            <li><a href="/categories/tshirts">Футболки</a></li>
             <li><a href="/categories/watches">Часы</a></li>
         </ul>
     </div>

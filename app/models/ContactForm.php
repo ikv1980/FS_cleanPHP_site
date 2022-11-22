@@ -41,7 +41,7 @@
             $_POST['age'] = null;
             $_POST['message'] = null;
 
-            if(!$success) return false;
+            if(!$success) return 'Сообщение не отправлено!';
             else return true;
         }
     }

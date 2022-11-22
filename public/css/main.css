@@ -50,6 +50,7 @@ header > .top-menu {
     color: #fff;
     text-transform: uppercase;
     /*закрепить верхнее меню*/
+    z-index: 100;
     position: fixed;
     top: 0;
     box-shadow: 0px 7px 7px -5px rgb(34 60 80 / 60%);
@@ -161,13 +162,15 @@ header > .menu > ul > li a:hover {color: #ff5644;}
 .main > .products > .product {
     width: 30%;
     margin-right: 5%;
-    height: 480px;
+    min-height: 420px;
     background: #eaeaea;
     border-radius: 5px 5px 0 0;
     margin-top: 50px;
     border: 1px solid silver;
     box-sizing: border-box;
+    padding-bottom: 20px;
 }
+
 /*У Каждого третьего элемента отступ справа равен 0*/
 .main > .products > .product:nth-child(3n) {margin-right: 0}
 
@@ -194,6 +197,27 @@ header > .menu > ul > li a:hover {color: #ff5644;}
 
 .main > .products > .product p {font-size: 16px}
 .main > .products > .product .btn {background: #ff5644}
+
+.pagination ul a li {
+    display: inline-block;
+    width: 20px;
+    margin-top: 30px;
+    padding: 10px;
+    border-radius: 50%;
+    background-color: #555;
+    text-align: center;
+}
+
+.pagination ul a li:hover {background-color: #FF5644;}
+
+.pagination .disabled {display: none;}
+.pagination .active {background-color: #FF5644;}
+
+.pagination ul a {
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+}
 
 footer {
     margin-top: 50px;
