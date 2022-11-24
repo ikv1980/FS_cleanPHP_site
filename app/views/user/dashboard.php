@@ -21,7 +21,7 @@
             <p>Привет, <b><?=$data['name']?></b></p>
             <p class="error"><?=$data['error']?></p>
             <form action="/user/dashboard" method="post" enctype="multipart/form-data">
-                <input type="file" name="filename">
+                <input type="file" name="filename" accept=".jpg,.jpeg,.png,.bmp,.webp">
                 <button type="submit" name="image" class="btn dashboard">Загрузить</button>
             </form>
             <div>

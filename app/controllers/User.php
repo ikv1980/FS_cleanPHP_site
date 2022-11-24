@@ -21,28 +21,27 @@
         // Отображение личного кабинета пользователя
         public function dashboard() {
             $user = $this->model('UserModel');
+            
             // выход пользователя
             if(isset($_POST['exit_btn'])) {
                 $user->logOut();
                 exit();
             }
 
-            // Получаем данные для отображения на странице
+            // Получаем данные для отображения на странице. 
             $data = $user->getUser();
             $data['error'] = '';
 
-            // Проверяем был ли выбран файл
+            // Проверяем была ли нажата кнопка "Загрузить"
             if (isset($_REQUEST['image'])) {
-                if (empty($_FILES['filename']['type'])) {
-                    $data['error'] = 'Вы не указали файла для загрузки';
-                }
+                // Валидация данных
+                $isValid = $user->validImage();
+                if($isValid == "Верно")
+                    $user->addimage();
+                    // exit();
+                else
+                    $data['error'] = $isValid;
             }
-
-            // действие, если файл выбран
-            if ($_FILES && $_FILES["filename"]["error"]==UPLOAD_ERR_OK) {
-                $user->addimage();
-                exit();
-            } 
 
             $this->view('user/dashboard', $data); // Передача данных в представление
         }

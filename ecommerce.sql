@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Ноя 22 2022 г., 18:09
+-- Время создания: Ноя 24 2022 г., 13:51
 -- Версия сервера: 10.4.25-MariaDB
 -- Версия PHP: 8.1.10
 
@@ -58,6 +58,28 @@ INSERT INTO `products` (`id`, `title`, `anons`, `text`, `img`, `price`, `categor
 (14, 'Крепкие ботинки 02', 'Классическое лого, известное каждому уважающему себя скейтбордисту.', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi alias nam veniam quos accusamus sit ipsum aperiam ut, nemo ad tempore ipsa soluta, iste in aliquid mollitia, id dolorum! Doloribus.', 'shoes02.jpg', 300, 'shoes'),
 (15, 'Крепкие ботинки 03', 'Плотная и надежная футболка с коротким рукавом и круглым вырезом.', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi alias nam veniam quos accusamus sit ipsum aperiam ut, nemo ad tempore ipsa soluta, iste in aliquid mollitia, id dolorum! Doloribus.', 'shoes03.jpg', 400, 'shoes');
 
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `name` varchar(70) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `pass` varchar(255) NOT NULL,
+  `image` varchar(150) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `pass`, `image`) VALUES
+(1, 'Константин', 'ikv1980@gmail.com', '$2y$10$F6NnT1MIkqd5YTISOU6ud.VKQ75o1R8dbwb.5tTc8v3ASjZx1v82K', 'ikv1980.webp'),
+(2, 'admin', 'twkostik@gmail.com', '$2y$10$0.TBW39DP0Gw4Cy3ttsP7edRWyEZFBtEnLSWAaqjhyFMOSVdPGRu2', 'user.webp');
+
 --
 -- Индексы сохранённых таблиц
 --
@@ -69,6 +91,12 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT для сохранённых таблиц
 --
 
@@ -77,6 +105,12 @@ ALTER TABLE `products`
 --
 ALTER TABLE `products`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT для таблицы `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -74,19 +74,20 @@
             setcookie('login', $email, time() + 3600, '/');
             header('Location: /user/dashboard'); // заголовок переадресации
         }
-        // функция добавление изображения ikv1980
+        // функция добавление изображения
         public function addimage() {
-
+            if ($_FILES && $_FILES["filename"]["error"]==UPLOAD_ERR_OK) {
                 $user = $_COOKIE['login']; // заносим в переменную авторизованного пользователя
                 echo $user;
                 echo gettype($user);
 
+                // Блок изменения имени файла на уникальное
                 $name = $_FILES["filename"]["name"]; // изначальное имя файла.расширение
                 $name_without_ext = pathinfo($name, PATHINFO_FILENAME); // изначальное имя 
                 $ext = pathinfo($name, PATHINFO_EXTENSION); // расширение
                 $new_name = $name_without_ext . "_" . time() . "." . $ext; // новое имя файла.расширение
 
-                // копирование файла на сервер
+                // копирование файла на сервер в папку
                 $path = "public/img/avatar/" . $new_name;
                 move_uploaded_file($_FILES["filename"]["tmp_name"], $path);
 
@@ -98,11 +99,22 @@
                     unlink("public/img/avatar/" . $image['image']);
                 }
 
-                // внесение информации о файле в БД
+                // внесение информации о новом файле в БД
                 $sql = "UPDATE users SET image=:image WHERE email=:email;";
                 $query = $this->_db->prepare($sql);
                 $query->execute(['image' => $new_name, 'email' => $user]);
 
                 header('Location: /user/dashboard'); // заголовок переадресации
+            } 
+        }
+
+        // Валидация изображения
+        public function validImage() {
+            if (empty($_FILES['filename']['type']))
+                return "Вы не указали файла для загрузки";
+            else if($_FILES['filename']['size'] / 1024 > 500)
+                return "Размер файла не более 500КБт";
+            else 
+                return "Верно";
         }
     }
