@@ -50,10 +50,10 @@ header > .top-menu {
     color: #fff;
     text-transform: uppercase;
     /*закрепить верхнее меню*/
-    z-index: 100;
+    /* z-index: 100;
     position: fixed;
     top: 0;
-    box-shadow: 0px 7px 7px -5px rgb(34 60 80 / 60%);
+    box-shadow: 0px 7px 7px -5px rgb(34 60 80 / 60%); */
 }
 
 header > .top-menu > .nav a {
@@ -125,6 +125,13 @@ header .btn.basket {
     border: 1px solid #333;
 }
 
+header .btn.dashboard, .dashboard {
+    width: 200px;
+    background: #ff5644;
+}
+
+.dashboard {width: 100px;}
+
 .btn:hover {
     transition: all 600ms ease;
     transform: scale(1.05) translateY(-5px);
@@ -150,6 +157,8 @@ header > .menu > ul > li {
 
 header > .menu > ul > li a {color: #333; font-weight: 600}
 header > .menu > ul > li a:hover {color: #ff5644;}
+
+.auth-checkout {text-align: center;}
 
 .main {margin-top: 50px}
 
