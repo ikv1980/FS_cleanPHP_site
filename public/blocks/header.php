@@ -15,7 +15,13 @@
             <span>Мы знаем что вы хотите!</span>
         </div>
         <div class="auth-checkout">
-            <a href="/basket"><button class="btn basket">Корзина <b>(0)</b></button></a><br>
+            <a href="/basket">
+				<?php
+                    require_once 'app/models/BasketModel.php';
+                    $basketModel = new BasketModel();
+                ?>
+                <button class="btn basket">Корзина <b>(<?=$basketModel->countItems()?>)</b></button>
+			</a><br>
             <?php if($_COOKIE['login'] == ''): ?>
 				<a href="/user/auth"><button class="btn auth">Войти</button></a>
 				<a href="/user/reg"><button class="btn">Регистрация</button></a>

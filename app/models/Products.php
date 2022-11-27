@@ -34,4 +34,9 @@
             return $result->fetch(PDO::FETCH_ASSOC);
         }
 
+        public function getProductsCart($items) {
+            $result = $this->_db->query("SELECT * FROM `products` WHERE `id` IN ($items)");
+            return $result->fetchAll(PDO::FETCH_ASSOC);
+        }
+
     }

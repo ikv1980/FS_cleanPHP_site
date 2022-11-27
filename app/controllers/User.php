@@ -22,6 +22,10 @@
         public function dashboard() {
             $user = $this->model('UserModel');
             
+            // Проверка, а авторизован ли пользователь?
+            if(!isset($_COOKIE['login']))
+                header('Location: /user/auth');
+
             // выход пользователя
             if(isset($_POST['exit_btn'])) {
                 $user->logOut();

@@ -25,7 +25,12 @@
             <div>
                 <p><?=$data['anons']?></p><br>
                 <p><?=$data['text']?></p>
-                <button class="btn">Купить за <?=$data['price']?> рублей</button>
+            </div>
+            <div>
+                <form action="/basket" method="post">
+                    <input type="hidden" name="item_id" value="<?=$data['id']?>">
+                    <button class="btn">Купить за <?=$data['price']?> рублей</button>
+                </form>
             </div>
         </div>
     </div>
