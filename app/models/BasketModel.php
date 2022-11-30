@@ -7,11 +7,14 @@
         // проверяет установленна ли сейчас сессия по ключу $session_name (true || false)
         public function isSetSession() {
             return isset($_SESSION[$this->session_name]);
+            
         }
 
         // удаление сессии по ключу $session_name
         public function deleteSession() {
             unset($_SESSION[$this->session_name]);
+            session_destroy();
+            header('Location: /basket');
         }
 
         // возвращает значение, которое записано в переменную $session_name ('cart')
@@ -34,6 +37,13 @@
                 if(!$itemExist)
                     $_SESSION[$this->session_name] = $_SESSION[$this->session_name].','.$itemID;
             }
+        }
+
+        // функция, позволяющая удалить товар из сессии по его ID
+        public function delToCart($itemID) {
+            $array = explode(",", $_SESSION[$this->session_name]);
+            unset($array[array_search($itemID,$array)]);
+            $_SESSION[$this->session_name] = implode(',', $array);
         }
 
         // подсчет количества элементов в сессии
